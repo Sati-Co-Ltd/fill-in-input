@@ -21,7 +21,7 @@ List of Object which contains ...
 | HN        | string(64)             | Y        |         | Hospital number                                                                                                                                                |
 | birthDate | string(date, datetime) | Y        |         | Date or datetime of birth in SQL format (`YYYY-mm-dd` or `YYYY-MM-dd HH:mm:ss`) or ISO8601 format (`YYYY-mm-ddTHH:mm:ss.sssz` or `YYYY-mm-ddTHH:mm:ss.sss+zz`) |
 | gender    | bool                   | Y        |         | `True` or `1` = male, `False` or `0` = female                                                                                                                  |
-| name      | string                 | N        | `NULL`  | Full name                                                                                                                                                      |
+| name      | string                 | N        | `NULL`  | Full name which is temporary stored in cloud                                                                                                                   |
 
 ### Example
 ```JSONC
@@ -94,4 +94,21 @@ List of Object which contains ...
 ]
 ```
   
+## Register, Deregister to Specific Records  
+To register or deregister patient to specific records, i.e. chronic disease, one day surgery, well-baby clinic, antenatal care  
+* Need: depend on the criteria of the record
+* Event: register `sio.emit('register_record', recordName, data)`
+* Event: deregister `sio.emit('register_record', recordName, data)`
+* Maximum size of data per batch: 1 MB of JSON text &asymp; 300-500 rows
   
+### Data  
+List of Object which contains ...  
+
+  | Key       | Value Type | Required | Default | Description                                                                |
+  | --------- | ---------- | -------- | ------- | -------------------------------------------------------------------------- |
+  | HN        | string(64) | Y        |         | Hospital number                                                            |
+  | TXN       | string(64) | Optional |         | Transaction number of visit or admission, depend on the criteria of record |
+  | type      | bool       | Y        |         | `True` or `1` = IPD, `False` or `0` = OPD                                  |
+  | register  | bool       | Y        |         | `True` or `1` = register, `False` or `0` = deregister                      |
+  | eventTime | datetime   |          | `now()` | register, deregister datetime                                              |
+  | staff     | string     |          | `NULL`  | Staff or employee number who register the record                           |
