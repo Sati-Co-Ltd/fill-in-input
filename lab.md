@@ -6,6 +6,9 @@
 - UA
 - UPCr
 - LFT
+- Hepatitis B
+- anti-HCV
+- 75g-OGTT
 - Fasting Glucose
 - Random Glucose
 - Fasting Lipid Profile
