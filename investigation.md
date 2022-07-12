@@ -19,7 +19,7 @@ Investigation name:
 * Subitem 1: result1 [, normal range 1]
 * Subitem 2: result2 [, normal range 2]
 ```  
-For example, CBC (Complete Blood Count)  
+For example, `CBC` (Complete Blood Count)  
 ```markdown
 CBC:
 * Hb: 12.1
@@ -27,7 +27,7 @@ CBC:
 * WBC: 8700
 ...
 ```
-But, some have only one result: Film L-S spine lateral view  
+But, some have only one result: `Film L-S spine lateral view`  
 ```markdown
 Film L-S spine lateral view:
 * Report: ...
@@ -76,7 +76,7 @@ Simple and fastest to parse style. All subitems are flatten and joined with inve
     {
         "TXN": "55555",
         "reportId": "Ac5586",
-        "study": "CBC",
+        "study": "lab:CBC",
         "report": {
             "Hb":12.3,
             "WBC": 12345
@@ -101,7 +101,7 @@ Simple and fastest to parse style. All subitems are flatten and joined with inve
     {
         "TXN": "55555",
         "reportId": "Ac5586",
-        "study": "CBC",
+        "study": "lab:CBC",
         "report": "Hb,12.3
 WBC,12345",
         "report": {
@@ -123,14 +123,14 @@ WBC,12345",
 ```
 
 
-### 3. DataSoft&reg;  
+### 4. DataSoft&reg;  
 The items contains semicolon-separated list of subitems. The report contains semicolon-separated list of report and pipe(|)-separated columns.
 ```JSONC
 [
     {
         "TXN": "55555",
         "reportId": "Ac5586",
-        "study": "CBC",
+        "study": "lab:CBC",
         "items": "Hb;WBC",
         "report": "12.3;12345|;(some note)",
         "collected": "2020-10-30T12:34:56Z",
@@ -147,6 +147,4 @@ The items contains semicolon-separated list of subitems. The report contains sem
 ]
 ```
 
-
-## Laboratory nomenclature
 
