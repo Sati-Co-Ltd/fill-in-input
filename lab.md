@@ -1,7 +1,7 @@
 # Laboratory nomenclature
 
 - CBC  Absolute neutrophil count
-- BUN, Cr
+- BUN, Cr, eGFR
 - Blood Electrolyte, Ca, Mg, P
 - UA
 - UPCr
