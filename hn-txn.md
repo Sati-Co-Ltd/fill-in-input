@@ -94,21 +94,44 @@ List of Object which contains ...
 ]
 ```
   
-## Register, Deregister to Specific Records  
-To register or deregister patient to specific records, i.e. chronic disease, one day surgery, well-baby clinic, antenatal care  
+## Register, Deregister to Special Records  
+To register or deregister patient to special records, i.e. chronic disease, one day surgery, well-baby clinic, antenatal care  
 * Need: depend on the criteria of the record
-* Event: register `sio.emit('register_record', recordName, data)`
-* Event: deregister `sio.emit('register_record', recordName, data)`
+* Event: special_record `sio.emit('special_record', recordName, data)`
 * Maximum size of data per batch: 1 MB of JSON text &asymp; 300-500 rows
   
 ### Data  
 List of Object which contains ...  
 
-  | Key       | Value Type | Required | Default | Description                                                                |
-  | --------- | ---------- | -------- | ------- | -------------------------------------------------------------------------- |
-  | HN        | string(64) | Y        |         | Hospital number                                                            |
-  | TXN       | string(64) | Optional |         | Transaction number of visit or admission, depend on the criteria of record |
-  | type      | bool       | Y        |         | `True` or `1` = IPD, `False` or `0` = OPD                                  |
-  | register  | bool       | Y        |         | `True` or `1` = register, `False` or `0` = deregister                      |
-  | eventTime | datetime   |          | `now()` | register, deregister datetime                                              |
-  | staff     | string     |          | `NULL`  | Staff or employee number who register the record                           |
+  | Key       | Value Type | Required | Default | Description                                                                    |
+  | --------- | ---------- | -------- | ------- | ------------------------------------------------------------------------------ |
+  | HN        | string(64) | Y        |         | Hospital number                                                                |
+  | TXN       | string(64) | Optional |         | Transaction number of visit or admission, **depend on the criteria of record** |
+  | type      | bool       | Y        |         | [type of TXN](#visit-data): `True` or `1` = IPD, `False` or `0` = OPD          |
+  | register  | bool       | Y        |         | `True` or `1` = register, `False` or `0` = deregister                          |
+  | eventTime | datetime   |          | `now()` | register, deregister datetime                                                  |
+  | staff     | string     |          | `NULL`  | Staff or employee number who register the record                               |
+
+
+
+### Example
+```JSONC
+[
+    {
+        "HN": "121561",
+        "TXN": "123456789",
+        "type": 0,
+        "eventTime": "2022-02-02T20:22:02Z",
+        "register": 1,
+        "staff": "1555"
+    },
+    {
+        "HN": "121561",
+        "TXN": "123456789",
+        "type": 0,
+        "eventTime": "2022-02-02T20:22:02Z",
+        "register": 0,
+        "staff": "1555"
+    },
+]
+```  
