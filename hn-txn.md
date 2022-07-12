@@ -1,4 +1,4 @@
-# Fill-in: Input Format of Data
+# Fill-in: Standard Format for Patient, Visit, and Special Record
 
 ## Abbreviation
 * sio: Socket.IO
@@ -50,7 +50,7 @@ List of Object which contains ...
 
   | Key             | Value Type           | Required | Default                     | Description                                                                                                               |
   | --------------- | -------------------- | -------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-  | TXN             | string(64)           | Y        |                             | Transaction number of visit or admission                                                                                  |
+  | TXN             | string(64)           | Y        |                             | Transaction number of visit or admission. **The OPD visit number should not be duplicated with IPD admission number.   ** |
   | type            | bool                 | Y        |                             | `True` or `1` = IPD, `False` or `0` = OPD                                                                                 |
   | visitTime       | datetime             | Y        |                             | Visit datetime                                                                                                            |
   | dischargeTime   | datetime             | Y        |                             | Discharge datetime                                                                                                        |
@@ -109,7 +109,6 @@ List of Object which contains ...
   | --------- | ---------- | -------- | ------- | ------------------------------------------------------------------------------ |
   | HN        | string(64) | Y        |         | Hospital number                                                                |
   | TXN       | string(64) | Optional |         | Transaction number of visit or admission, **depend on the criteria of record** |
-  | type      | bool       | Y        |         | [type of TXN](#visit-data): `True` or `1` = IPD, `False` or `0` = OPD          |
   | register  | bool       | Y        |         | `True` or `1` = register, `False` or `0` = deregister                          |
   | eventTime | datetime   |          | `now()` | register, deregister datetime                                                  |
   | staff     | string     |          | `NULL`  | Staff or employee number who register the record                               |
