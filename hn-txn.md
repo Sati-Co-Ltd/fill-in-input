@@ -48,19 +48,21 @@ List of Object which contains ...
 ### Data  
 List of Object which contains ...  
 
-  | Key             | Value Type           | Required | Default                     | Description                                                                |
-  | --------------- | -------------------- | -------- | --------------------------- | -------------------------------------------------------------------------- |
-  | TXN             | string(64)           | Y        |                             | Transaction number of visit or admission                                   |
-  | type            | bool                 | Y        |                             | `True` or `1` = IPD, `False` or `0` = OPD                                  |
-  | visitTime       | datetime             | Y        |                             | Visit datetime                                                             |
-  | dischargeTime   | datetime             | Y        |                             | Discharge datetime                                                         |
-  | relatedTXN      | Array of string(64)  | N        | `[]`                        | related TXN e.g. TXN of refered OPD, TXN of OPD which patient is admitted. |
-  | lengthOfStay    | unsigned int         | N        | `dischargeTime - visitTime` | Adjusted length of staying by remained time and leave day                  |
-  | dischargeStatus | unsigned int (0 - 9) | N        |                             | Discharge status as the description in Thai Medical Record Audit Guideline |
-  | dischargeType   | unsigned int (0 - 9) | N        |                             | Discharge type as the description in Thai Medical Record Audit Guideline   |
-  
+  | Key             | Value Type           | Required | Default                     | Description                                                                                                               |
+  | --------------- | -------------------- | -------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+  | TXN             | string(64)           | Y        |                             | Transaction number of visit or admission                                                                                  |
+  | type            | bool                 | Y        |                             | `True` or `1` = IPD, `False` or `0` = OPD                                                                                 |
+  | visitTime       | datetime             | Y        |                             | Visit datetime                                                                                                            |
+  | dischargeTime   | datetime             | Y        |                             | Discharge datetime                                                                                                        |
+  | relatedTXN      | Array of string(64)  | N        | `[]`                        | related TXN e.g. TXN of refered OPD, TXN of OPD which patient is admitted.                                                |
+  | lengthOfStay    | unsigned int         | N        | `dischargeTime - visitTime` | Adjusted length of staying by remained time and leave day                                                                 |
+  | dischargeStatus | unsigned int (0 - 9) | N        |                             | Discharge status as the description in [Thai Medical Record Audit Guideline](https://online.pubhtml5.com/pcqh/eqfr/#p=20) |
+  | dischargeType   | unsigned int (0 - 9) | N        |                             | Discharge type as the description in [Thai Medical Record Audit Guideline](https://online.pubhtml5.com/pcqh/eqfr/#p=20)   |
+  | coverage        | Array of string      | N        | `[]`                        | Care coverage: the input must be in [list of care coverages](care-coverage.md)                                            |
   
 [Thai Medical Record Audit Guideline](https://online.pubhtml5.com/pcqh/eqfr/#p=20)
+
+
 
 ### Example
 ```JSONC
