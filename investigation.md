@@ -1,5 +1,7 @@
 # Fill-in: Standard Format for Diagnostic Report of Laboratory, Pathology, Imaging, and Other Investigations
 
+## Path or Socket.IO event
+SIO: investigation `sio.emit('investigation', data)`
 
 ## Standard of input
 
