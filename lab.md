@@ -23,13 +23,22 @@
 - Antinuclear antibody
 - Coagulation Factor  (VIII, IX)
 
-### Complete Blood Count (CBC)
+## Standard Nomenclature  
+Prefix is `lab:`. Study name and subitem follows the prefix respectively, i.e. `lab:CBC:Hb`, `lab:UPCr`.  
 
-Fill-in standard key: `lab:CBC`
+## Complete Blood Count (CBC)
 
-| subitem | full name  | Fill-in subitem style | Fill-in flatten style | value type | unit | description                   |
-| ------- | ---------- | --------------------- | --------------------- | ---------- | ---- | ----------------------------- |
-| Hb      | Hemoglobin | `Hb`                  | `lab:CBC:Hb`          | float      | g/dL |                               |
-| Hct     | Hematocrit | `Hct`                 | `lab:CBC:Hct`         | float      | %    | in percentage value e.g. 49.1 |
+* Fill-in standard key: `lab:CBC`
+
+| subitem | full name        | Fill-in subitem style | Fill-in flatten style | value type | unit                | description                   |
+| ------- | ---------------- | --------------------- | --------------------- | ---------- | ------------------- | ----------------------------- |
+| Hb      | Hemoglobin       | `Hb`                  | `lab:CBC:Hb`          | float      | g/dL                |                               |
+| Hct     | Hematocrit       | `Hct`                 | `lab:CBC:Hct`         | float      | %                   | in percentage value e.g. 49.1 |
+| WBC     | White Blood Cell | `WBC`                 | `lab:CBC:WBC`         | float      | cell/mm<sup>3</sup> |                               |
 
 
+## Urine Protein per Creatinine Ratio  
+* Fill-in standard key: `lab:UPCr`
+* Value type: float
+* Unit: mg/g
+* Description: 
