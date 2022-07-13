@@ -1,21 +1,13 @@
 # Standard input format for Fill in
 
 
-## Patient &amp; Transaction data
-
-
-## Special Record
-  
-The [template of special record](hn-txn.md#register-deregister-to-special-records)
-
-
-## Laboratory data
-
-
-## Medication &amp; Equipment
-
-
-## Imaging data
-
-
-## Electronic Medical Record Data
+* [Patient &amp; Transaction data](hn-txn.md)
+  * [Care Coverage](care-coverage.md)
+* [ICD-9 and ICD-10](icd.md)
+* [Investigation](investigation.md)
+  * [Laboratory and pahtology study](lab.md)
+  * [Imaging study](imaging.md)
+  * Special test
+* [Medication, Equipment and Procedure](medication-equipment.md)
+* Electronic Medical Record Data
+* [Special Record](hn-txn.md#register-deregister-to-special-records) e.g. NCDs record, Well-baby clinic
