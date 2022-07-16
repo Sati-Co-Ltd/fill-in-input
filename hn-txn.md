@@ -107,10 +107,10 @@ To register or deregister patient to special records, i.e. chronic disease, one 
 * Maximum size of data per batch: 1 MB of JSON text &asymp; 300-500 rows
   
 ## Parameters
-Parameters | Value Type | Required | Default | Description                                                                    |
-  | --------- | ---------- | -------- | ------- | ------------------------------------------------------------------------------ |
-  recordName | string | Y | | [Special record abbreviation](special-record.md)
-  | register  | bool       | Y        |         | `True` or `1` = register, `False` or `0` = deregister                          |
+| Parameters | Value Type | Required | Default | Description                                           |
+| ---------- | ---------- | -------- | ------- | ----------------------------------------------------- |
+| recordName | string     | Y        |         | [Special record abbreviation](special-record.md)      |
+| register   | bool       | Y        |         | `True` or `1` = register, `False` or `0` = deregister |
 
 ### Data  
 List of Object which contains ...  
