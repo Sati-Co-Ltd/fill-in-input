@@ -290,93 +290,93 @@ Prefix is `lab:`. Study name and subitem follows the prefix respectively, i.e. `
 | Ferritin   | Ferritin  | `Ferritin` | `lab:ironStudy:ferritin` | float     | mcg/L    |       |           |
 
 ## Antiglobulin Test
-* Fill-in standard key: `lab:Antiglobulin Test`
+* Fill-in standard key: `lab:antiglobulinTest`
 
 | subitem | full name        | Fill-in subitem style | Fill-in flatten style | value type | unit                | description                   |
 | ------- | ---------------- | --------------------- | --------------------- | ---------- | ------------------- | ----------------------------- |
-| Direct Antiglobulin Test   | Direct Antiglobulin Test  | `Direct Antiglobulin Test` | `lab:Antiglobulin Test:Direct Antiglobulin Test` | string     |     |       |           |
-| Indirect Antiglobulin Test   | Indirect Antiglobulin Test  | `Indirect Antiglobulin Test` | `lab:Antiglobulin Test:Indirect Antiglobulin Test` | string     |     |       |           |
+| Direct Antiglobulin Test   | Direct Antiglobulin Test  | `Direct Antiglobulin Test` | `lab:antiglobulinTest:DAT` | string     |     |       |           |
+| Indirect Antiglobulin Test   | Indirect Antiglobulin Test  | `Indirect Antiglobulin Test` | `lab:antiglobulinTest:IAT` | string     |     |       |           |
 
 ## Complement Level
-* Fill-in standard key: `lab:Complement Level`
+* Fill-in standard key: `lab:complementLevel`
 
 | subitem | full name        | Fill-in subitem style | Fill-in flatten style | value type | unit                | description                   |
 | ------- | ---------------- | --------------------- | --------------------- | ---------- | ------------------- | ----------------------------- |
-| C3c Level   | Complement C3c Level  | `C3c Level` | `lab:Complement Level:C3c Level` | float     | mcg/ml     |      |           |
-| C4 Level   | Complement C4 Level  | `C4 Level` | `lab:Complement Level:C4 Level` | float     | mcg/ml     |      |           |
+| C3c Level   | Complement C3c Level  | `C3c Level` | `lab:complementLevel:C3c` | float     | mcg/ml     |      |           |
+| C4 Level   | Complement C4 Level  | `C4 Level` | `lab:complementLevel:C4` | float     | mcg/ml     |      |           |
 
 ## Parathyroid Hormone
-* Fill-in standard key: `lab:Parathyroid Hormone`
+* Fill-in standard key: `lab:parathyroidHormone`
 
 | subitem | full name        | Fill-in subitem style | Fill-in flatten style | value type | unit                | description                   |
 | ------- | ---------------- | --------------------- | --------------------- | ---------- | ------------------- | ----------------------------- |
-| PTH   | Parathyroid Hormone  | `PTH` | `lab:Parathyroid Hormone:PTH` | float     | pg/ml     |      |           |
-| Vitamin D   | Vitamin D Level  | `Vitamin D` | `lab:Parathyroid Hormone:Vitamin D` | float     | ng/ml     |      |           |
-| Calcitonin   | Calcitonin  | `Calcitonin` | `lab:Parathyroid Hormone:Calcitonin` | float     | pg/ml     |      |           |
+| PTH   | Parathyroid Hormone  | `PTH` | `lab:parathyroidHormone:PTH` | float     | pg/ml     |      |           |
+| Vitamin D   | Vitamin D Level  | `Vitamin D` | `lab:parathyroidHormone:vitaminD` | float     | ng/ml     |      |           |
+| Calcitonin   | Calcitonin  | `Calcitonin` | `lab:parathyroidHormone:calcitonin` | float     | pg/ml     |      |           |
 
 ## CSF Profile
-* Fill-in standard key: `lab:CSF Profile`
+* Fill-in standard key: `lab:CSF`
 
 | subitem | full name        | Fill-in subitem style | Fill-in flatten style | value type | unit                | description                   |
 | ------- | ---------------- | --------------------- | --------------------- | ---------- | ------------------- | ----------------------------- |
-| Color      | CSF Color     | `Color`                  | `lab:CSF Profile:Color`          | string      |              |                               |                    |
-| Appearance      | CSF Appearance     | `Appearance`                  | `lab:CSF Profile:Appearance`    | string      |              |                               |                    |
-| Open Pressure      | Open Pressure     | `Open Pressure`                  | `lab:CSF Profile:Open Pressure`    | float      | cmH2O             |                               |                    |
-| Close Pressure      | Close Pressure     | `Close Pressure`                  | `lab:CSF Profile:Close Pressure`    | float      | cmH2O             |                               |                    |
-| RBC      | CSF Red Blood Cell | `RBC`  | `lab:CSF Profile:RBC`    | float      |             |          |                    |
-| WBC      | CSF White Blood Cell | `WBC`  | `lab:CSF Profile:WBC`    | float      |             |          |                    |
-| Neutrophil      | CSF Neutrophil | `Neutrophil`  | `lab:CSF Profile:Neutrophil`    | float      | %            |          |                    |
-| Lymphocyte      | CSF Lymphocyte | `Lymphocyte`  | `lab:CSF Profile:Lymphocyte`    | float      | %            |          |                    |
-| Protein      | CSF Protein | `Protein`  | `lab:CSF Profile:Protein`    | float      |   mg/dl         |          |                    |
-| Glucose      | CSF Glucose | `Glucose`  | `lab:CSF Profile:Glucose`    | float      |   mg/dl         |          |                    |
-| Gram Stain      | CSF Gram Stain | `Gram Stain`  | `lab:CSF Profile:Gram Stain`    | string      |            |          |                    |
-| Culture      | CSF Culture | `Culture`  | `lab:CSF Profile:Culture`    | string      |            |          |                    |
+| Color      | CSF Color     | `Color`                  | `lab:CSF:color`          | string      |              |                               |                    |
+| Appearance      | CSF Appearance     | `Appearance`                  | `lab:CSF:appearance`    | string      |              |                               |                    |
+| Open Pressure      | Open Pressure     | `Open Pressure`                  | `lab:CSF:openPressure`    | float      | cmH2O             |                               |                    |
+| Close Pressure      | Close Pressure     | `Close Pressure`                  | `lab:CSF:closePressure`    | float      | cmH2O             |                               |                    |
+| RBC      | CSF Red Blood Cell | `RBC`  | `lab:CSF:RBC`    | float      |             |          |                    |
+| WBC      | CSF White Blood Cell | `WBC`  | `lab:CSF:WBC`    | float      |             |          |                    |
+| Neutrophil      | CSF Neutrophil | `Neutrophil`  | `lab:CSF:N`    | float      | %            |          |                    |
+| Lymphocyte      | CSF Lymphocyte | `Lymphocyte`  | `lab:CSF:L`    | float      | %            |          |                    |
+| Protein      | CSF Protein | `Protein`  | `lab:CSF:protein`    | float      |   mg/dl         |          |                    |
+| Glucose      | CSF Glucose | `Glucose`  | `lab:CSF:glucose`    | float      |   mg/dl         |          |                    |
+| Gram Stain      | CSF Gram Stain | `Gram Stain`  | `lab:CSF:Gram`    | string      |            |          |                    |
+| Culture      | CSF Culture | `Culture`  | `lab:CSF:culture`    | string      |            |          |                    |
 
 ## Ascites Profile
-* Fill-in standard key: `lab:Ascites Profile`
+* Fill-in standard key: `lab:ascites`
 
 | subitem | full name        | Fill-in subitem style | Fill-in flatten style | value type | unit                | description                   |
 | ------- | ---------------- | --------------------- | --------------------- | ---------- | ------------------- | ----------------------------- |
-| Color      | Ascites Color     | `Color`                  | `lab:Ascites Profile:Color`          | string      |              |                               |                    |
-| Appearance      | Ascites Appearance     | `Appearance`                  | `lab:Ascites Profile:Appearance`    | string      |              |                               |                    |
-| RBC      | Ascites Red Blood Cell | `RBC`  | `lab:Ascites Profile:RBC`    | float      | cells/cu.mm.            |          |                    |
-| WBC      | Ascites White Blood Cell | `WBC`  | `lab:Ascites Profile:WBC`    | float      | cells/cu.mm.            |          |                    |
-| Neutrophil      | Ascites Neutrophil | `Neutrophil`  | `lab:Ascites Profile:Neutrophil`    | float      | %            |          |                    |
-| Lymphocyte      | Ascites Lymphocyte | `Lymphocyte`  | `lab:Ascites Profile:Lymphocyte`    | float      | %            |          |                    |
-| Protein      | Ascites Protein | `Protein`  | `lab:Ascites Profile:Protein`    | float      |   g/dl         |          |                    |
-| Albumin      | Ascites Albumin | `Albumin`  | `lab:Ascites Profile:albumin`    | float      |   g/dl         |          |                    |
-| Gram Stain      | Ascites Gram Stain | `Gram Stain`  | `lab:Ascites Profile:Gram Stain`    | string      |            |          |                    |
-| Culture      | Ascites Culture | `Culture`  | `lab:Ascites Profile:Culture`    | string      |            |          |                    |
+| Color      | Ascites Color     | `Color`                  | `lab:ascites:color`          | string      |              |                               |                    |
+| Appearance      | Ascites Appearance     | `Appearance`                  | `lab:ascites:appearance`    | string      |              |                               |                    |
+| RBC      | Ascites Red Blood Cell | `RBC`  | `lab:ascites:RBC`    | float      | cells/cu.mm.            |          |                    |
+| WBC      | Ascites White Blood Cell | `WBC`  | `lab:ascites:WBC`    | float      | cells/cu.mm.            |          |                    |
+| Neutrophil      | Ascites Neutrophil | `Neutrophil`  | `lab:ascites:N`    | float      | %            |          |                    |
+| Lymphocyte      | Ascites Lymphocyte | `Lymphocyte`  | `lab:ascites:L`    | float      | %            |          |                    |
+| Protein      | Ascites Protein | `Protein`  | `lab:ascites:protein`    | float      |   g/dl         |          |                    |
+| Albumin      | Ascites Albumin | `Albumin`  | `lab:ascites:albumin`    | float      |   g/dl         |          |                    |
+| Gram Stain      | Ascites Gram Stain | `Gram Stain`  | `lab:ascites:Gram`    | string      |            |          |                    |
+| Culture      | Ascites Culture | `Culture`  | `lab:ascites:culture`    | string      |            |          |                    |
 
 ## Pleural Fluid Profile
-* Fill-in standard key: `lab:Pleural Fluid Profilee`
+* Fill-in standard key: `lab:pleuralFluid`
 
 | subitem | full name        | Fill-in subitem style | Fill-in flatten style | value type | unit                | description                   |
 | ------- | ---------------- | --------------------- | --------------------- | ---------- | ------------------- | ----------------------------- |
-| Color      | Pleural Fluid Color     | `Color`                  | `lab:Pleural Fluid Profile:Color`          | string      |              |                               |                    |
-| Appearance      | Pleural Fluid Appearance     | `Appearance`                  | `lab:Pleural Fluid Profile:Appearance`    | string      |              |                               |                    |
-| pH      | Pleural Fluid pH     | `pH`                  | `lab:Pleural Fluid Profile:pH`    | float      |              |                               |                    |
-| RBC      | Pleural Fluid Red Blood Cell | `RBC`  | `lab:Pleural Fluid Profile:RBC`    | float      | cells/cu.mm.            |          |                    |
-| WBC      | Pleural Fluid White Blood Cell | `WBC`  | `lab:Pleural Fluid Profile:WBC`    | float      | cells/cu.mm.            |          |                    |
-| Neutrophil      | Pleural Fluid Neutrophil | `Neutrophil`  | `lab:Pleural Fluid Profile:Neutrophil`    | float      | %            |          |                    |
-| Lymphocyte      | Pleural Fluid Lymphocyte | `Lymphocyte`  | `lab:Pleural Fluid Profile:Lymphocyte`    | float      | %            |          |                    |
-| Glucose      | Pleural Fluid Glucose | `Glucose`  | `lab:Pleural Fluid Profile:Glucose`    | float      |   mg/dl         |          |                    |
-| LDH      | Pleural Fluid LDH | `LDH`  | `lab:Pleural Fluid Profile:LDH`    | float      |   U/L         |          |                    |
-| Gram Stain      | Pleural Fluid Gram Stain | `Gram Stain`  | `lab:Pleural Fluid Profile:Gram Stain`    | string      |            |          |                    |
-| Culture      | Pleural Fluid Culture | `Culture`  | `lab:Pleural Fluid Profile:Culture`    | string      |            |          |                    |
+| Color      | Pleural Fluid Color     | `Color`                  | `lab:pleuralFluid:color`          | string      |              |                               |                    |
+| Appearance      | Pleural Fluid Appearance     | `Appearance`                  | `lab:pleuralFluid:appearance`    | string      |              |                               |                    |
+| pH      | Pleural Fluid pH     | `pH`                  | `lab:pleuralFluid:pH`    | float      |              |                               |                    |
+| RBC      | Pleural Fluid Red Blood Cell | `RBC`  | `lab:pleuralFluid:RBC`    | float      | cells/cu.mm.            |          |                    |
+| WBC      | Pleural Fluid White Blood Cell | `WBC`  | `lab:pleuralFluid:WBC`    | float      | cells/cu.mm.            |          |                    |
+| Neutrophil      | Pleural Fluid Neutrophil | `Neutrophil`  | `lab:pleuralFluid:N`    | float      | %            |          |                    |
+| Lymphocyte      | Pleural Fluid Lymphocyte | `Lymphocyte`  | `lab:pleuralFluid:L`    | float      | %            |          |                    |
+| Glucose      | Pleural Fluid Glucose | `Glucose`  | `lab:pleuralFluid:Glucose`    | float      |   mg/dl         |          |                    |
+| LDH      | Pleural Fluid LDH | `LDH`  | `lab:pleuralFluid:LDH`    | float      |   U/L         |          |                    |
+| Gram Stain      | Pleural Fluid Gram Stain | `Gram Stain`  | `lab:pleuralFluid:Gram`    | string      |            |          |                    |
+| Culture      | Pleural Fluid Culture | `Culture`  | `lab:pleuralFluid:culture`    | string      |            |          |                    |
 
 ## Synovial Fluid Profile
-* Fill-in standard key: `lab:Synovial Fluid Profilee`
+* Fill-in standard key: `lab:synovialFluid`
 
 | subitem | full name        | Fill-in subitem style | Fill-in flatten style | value type | unit                | description                   |
 | ------- | ---------------- | --------------------- | --------------------- | ---------- | ------------------- | ----------------------------- |
-| Color      | Synovial Fluid Color     | `Color`                  | `lab:Synovial Fluid Profile:Color`          | string      |              |                               |                    |
-| Appearance      | Synovial Fluid Appearance     | `Appearance`                  | `lab:Synovial Fluid Profile:Appearance`    | string      |              |                               |                    |
-| Viscosity      | Synovial Fluid Viscosity     | `Viscosity`                  | `lab:Synovial Fluid Profile:Viscosity`          | string      |              |                               |                    |
-| RBC      | Synovial Fluid Red Blood Cell | `RBC`  | `lab:Synovial Fluid Profile:RBC`    | float      | cells/cu.mm.            |          |                    |
-| WBC      | Synovial Fluid White Blood Cell | `WBC`  | `lab:Synovial Fluid Profile:WBC`    | float      | cells/cu.mm.            |          |                    |
-| Neutrophil      | Synovial Fluid Neutrophil | `Neutrophil`  | `lab:Synovial Fluid Profile:Neutrophil`    | float      | %            |          |                    |
-| Lymphocyte      | Synovial Fluid Lymphocyte | `Lymphocyte`  | `lab:Synovial Fluid Profile:Lymphocyte`    | float      | %            |          |                    |
-| Gram Stain      | Synovial Fluid Gram Stain | `Gram Stain`  | `lab: Synovial Fluid Profile:Gram Stain`    | string      |            |          |                    |
-| Culture      |  Synovial Fluid Culture | `Culture`  | `lab: Synovial Fluid Profile:Culture`    | string      |            |          |                    |
-| Crystal      |  Synovial Fluid Crystal | `Crystal`  | `lab: Synovial Fluid Profile:Crystal`    | string      |            |          |                    |
+| Color      | Synovial Fluid Color     | `Color`                  | `lab:synovialFluid:color`          | string      |              |                               |                    |
+| Appearance      | Synovial Fluid Appearance     | `Appearance`                  | `lab:synovialFluid:appearance`    | string      |              |                               |                    |
+| Viscosity      | Synovial Fluid Viscosity     | `Viscosity`                  | `lab:synovialFluid:viscosity`          | string      |              |                               |                    |
+| RBC      | Synovial Fluid Red Blood Cell | `RBC`  | `lab:synovialFluid:RBC`    | float      | cells/cu.mm.            |          |                    |
+| WBC      | Synovial Fluid White Blood Cell | `WBC`  | `lab:synovialFluid:WBC`    | float      | cells/cu.mm.            |          |                    |
+| Neutrophil      | Synovial Fluid Neutrophil | `Neutrophil`  | `lab:synovialFluid:N`    | float      | %            |          |                    |
+| Lymphocyte      | Synovial Fluid Lymphocyte | `Lymphocyte`  | `lab:synovialFluid:L`    | float      | %            |          |                    |
+| Gram Stain      | Synovial Fluid Gram Stain | `Gram Stain`  | `lab: Synovial Fluid Profile:Gram`    | string      |            |          |                    |
+| Culture      |  Synovial Fluid Culture | `Culture`  | `lab: Synovial Fluid Profile:culture`    | string      |            |          |                    |
+| Crystal      |  Synovial Fluid Crystal | `Crystal`  | `lab: Synovial Fluid Profile:crystal`    | string      |            |          |                    |
