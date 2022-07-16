@@ -1,8 +1,4 @@
-﻿
-
-
-> Written with [StackEdit](https://stackedit.io/).
-> # Laboratory nomenclature
+﻿# Laboratory nomenclature
 
 - CBC  Absolute neutrophil count 
 - BUN, Cr, eGFR
@@ -217,81 +213,81 @@ Prefix is `lab:`. Study name and subitem follows the prefix respectively, i.e. `
 
 | subitem | full name        | Fill-in subitem style | Fill-in flatten style | value type | unit                | description                   |
 | ------- | ---------------- | --------------------- | --------------------- | ---------- | ------------------- | ----------------------------- |
-| NS1 Antigen    | Nonstructural Protein 1 Antigen Test  | `NS1 Antigen` | `lab:tropicalInfection Viral Profile:NS1 Antigen`     | string     |             |       |                    |
-| Dengue IgM    | Dengue Immunoglobulin M  | `Dengue IgM` | `lab:tropicalInfection Viral Profile:Dengue IgM`     | string     |             |       |                    |
-| Dengue IgG    | Dengue Immunoglobulin G  | `Dengue IgG` | `lab:tropicalInfection Viral Profile:Dengue IgG`     | string     |             |       |                    |
-| Scrub Typhus IgM    | Scrub Typhus Immunoglobulin M  | `Scrub Typhus IgM` | `lab:tropicalInfection Viral Profile:Scrub Typhus IgM`     | string     |             |       |                    |
-| Scrub Typhus IgG    | Scrub Typhus Immunoglobulin G  | `Scrub Typhus IgG` | `lab:tropicalInfection Viral Profile:Scrub Typhus IgG`     | string     |             |       |                    |
-| Leptospirosis IgM    | Leptospirosis Immunoglobulin M  | `Leptospirosis IgM` | `lab:tropicalInfection Viral Profile:Leptospirosis IgM`      | string     |                 |     |                    |
-| Leptospirosis IgG    | Leptospirosis Immunoglobulin G  | `Leptospirosis IgG` | `lab:tropicalInfection Viral Profile:Leptospirosis IgG`      | string     |                 |     |                    |
+| NS1 Antigen    | Nonstructural Protein 1 Antigen Test  | `NS1 Antigen` | `lab:tropicalInfection:NS1-Antigen`     | string     |             |       |                    |
+| Dengue IgM    | Dengue Immunoglobulin M  | `Dengue IgM` | `lab:tropicalInfection:DengueIgM`     | string     |             |       |                    |
+| Dengue IgG    | Dengue Immunoglobulin G  | `Dengue IgG` | `lab:tropicalInfection:DengueIgG`     | string     |             |       |                    |
+| Scrub Typhus IgM    | Scrub Typhus Immunoglobulin M  | `Scrub Typhus IgM` | `lab:tropicalInfection:ScrubTyphusIgM`     | string     |             |       |                    |
+| Scrub Typhus IgG    | Scrub Typhus Immunoglobulin G  | `Scrub Typhus IgG` | `lab:tropicalInfection:ScrubTyphusIgG`     | string     |             |       |                    |
+| Leptospirosis IgM    | Leptospirosis Immunoglobulin M  | `Leptospirosis IgM` | `lab:tropicalInfection:LeptospirosisIgM`      | string     |                 |     |                    |
+| Leptospirosis IgG    | Leptospirosis Immunoglobulin G  | `Leptospirosis IgG` | `lab:tropicalInfection:LeptospirosisIgG`      | string     |                 |     |                    |
 
 ## Cardiac Marker
-* Fill-in standard key: `lab:Cardiac Marker`
+* Fill-in standard key: `lab:cardiacMarker`
 
 | subitem | full name        | Fill-in subitem style | Fill-in flatten style | value type | unit                | description                   |
 | ------- | ---------------- | --------------------- | --------------------- | ---------- | ------------------- | ----------------------------- |
-| LDH    | Lactate Dehydrogenase  | `LDH` | `lab:Cardiac Marker:LDH` | float     | U/L    |       |           |
-| Troponin-T hs    | Troponin T High Sensitivity  | `Troponin-T hs` | `lab:Cardiac Marker:Troponin-T hs` | float     | pg/ml    |       |           |
-| hs-Troponin I    | High Sensitivity hs-Troponin I  | `hs-Troponin I` | `lab:Cardiac Marker:hs-Troponin I` | float     | ng/L    |       |           |
-| Total CK    | Total Creatine Kinase  | `Total CK` | `lab:Cardiac Marker:Total CK` | float     | U/L    |       |           |
-| CK-MB Activity   | Creatine Kinase Myoglobin Binding Activity | `CK-MB Activity` | `lab:Cardiac Marker:CK-MB Activity` | float     | U/L    |       |           |
-| CK-MB Mass  | Creatine Kinase Myoglobin Binding Mass | `CK-MB Mass` | `lab:Cardiac Marker:CK-MB Mass` | float     | ng/ml    |       |           |
-| Pro-BNP  | Pro-hormone B-type Natriuretic Peptide | `Pro-BNP` | `lab:Cardiac Marker:Pro-BNP` | float     | pg/ml    |       |           |
+| LDH    | Lactate Dehydrogenase  | `LDH` | `lab:cardiacMarker:LDH` | float     | U/L    |       |           |
+| Troponin-T hs    | Troponin T High Sensitivity  | `Troponin-T hs` | `lab:cardiacMarker:hs-cTnT` | float     | pg/ml    |       |           |
+| hs-Troponin I    | High Sensitivity hs-Troponin I  | `hs-Troponin I` | `lab:cardiacMarker:hs-cTnI` | float     | ng/L    |       |           |
+| Total CK    | Total Creatine Kinase  | `Total CK` | `lab:cardiacMarker:totalCK` | float     | U/L    |       |           |
+| CK-MB Activity   | Creatine Kinase Myoglobin Binding Activity | `CK-MB-Activity` | `lab:cardiacMarker:CK-MB-Activity` | float     | U/L    |       |           |
+| CK-MB Mass  | Creatine Kinase Myoglobin Binding Mass | `CK-MB-Mass` | `lab:cardiacMarker:CK-MB-Mass` | float     | ng/ml    |       |           |
+| Pro-BNP  | Pro-hormone B-type Natriuretic Peptide | `Pro-BNP` | `lab:cardiacMarker:Pro-BNP` | float     | pg/ml    |       |           |
 
 ## Blood Degradation Product
-* Fill-in standard key: `lab:Cardiac Marker`
+* Fill-in standard key: `lab:bloodDegradation`
 
 | subitem | full name        | Fill-in subitem style | Fill-in flatten style | value type | unit                | description                   |
 | ------- | ---------------- | --------------------- | --------------------- | ---------- | ------------------- | ----------------------------- |
-| D-dimer    | D-dimer  | `D-dimer` | `lab:Blood Degradation Product:D-dimer` | float     | ng/ml    |       |           |
-| Fibrinogen    | Fibrinogen  | `Fibrinogen` | `lab:Blood Degradation Product:Fibrinogen` | float     | mg/dl    |       |           |
+| D-dimer    | D-dimer  | `D-dimer` | `lab:bloodDegradation:D-dimer` | float     | ng/ml    |       |           |
+| Fibrinogen    | Fibrinogen  | `Fibrinogen` | `lab:bloodDegradation:fibrinogen` | float     | mg/dl    |       |           |
 
 ## Blood Lactate
-* Fill-in standard key: `lab:Blood Lactate`
+* Fill-in standard key: `lab:bloodLactate`
 
 | subitem | full name        | Fill-in subitem style | Fill-in flatten style | value type | unit                | description                   |
 | ------- | ---------------- | --------------------- | --------------------- | ---------- | ------------------- | ----------------------------- |
-| Blood Lactate    | Blood Lactate  | `Blood Lactate` | `lab:Blood Lacate:Blood Lactate` | float     | mmol/dl    |       |           |
+| Blood Lactate    | Blood Lactate  | `Blood Lactate` | `lab:bloodLacate:bloodLactate` | float     | mmol/dl    |       |           |
 
 ## Inflammatory Marker
-* Fill-in standard key: `lab:Inflammatory Marker`
+* Fill-in standard key: `lab:inflammatoryMarker`
 
 | subitem | full name        | Fill-in subitem style | Fill-in flatten style | value type | unit                | description                   |
 | ------- | ---------------- | --------------------- | --------------------- | ---------- | ------------------- | ----------------------------- |
-| ESR    | Erythrocyte Sedimentation Rate  | `ESR` | `lab:Inflammatory Marker:ESR` | float     | mm/hr    |       |           |
-| CRP    | C-reactive Protein  | `CRP` | `lab:Inflammatory Marker:CRP` | float     | mg/L    |       |           |
-| PCT    | Procalcitonin  | `PCT` | `lab:Inflammatory Marker:PCT` | float     | ng/ml    |       |           |
+| ESR    | Erythrocyte Sedimentation Rate  | `ESR` | `lab:inflammatoryMarker:ESR` | float     | mm/hr    |       |           |
+| CRP    | C-reactive Protein  | `CRP` | `lab:inflammatoryMarker:CRP` | float     | mg/L    |       |           |
+| PCT    | Procalcitonin  | `PCT` | `lab:inflammatoryMarker:PCT` | float     | ng/ml    |       |           |
 
 ## Serum Cortisol
-* Fill-in standard key: `lab:Serum Cortisol`
+* Fill-in standard key: `lab:serumCortisol`
 
 | subitem | full name        | Fill-in subitem style | Fill-in flatten style | value type | unit                | description                   |
 | ------- | ---------------- | --------------------- | --------------------- | ---------- | ------------------- | ----------------------------- |
-| Serum Morning Cortisol    | Serum Morning Cortisol  | `Serum Morning Cortisol` | `lab:Serum Cortisol:Serum Morning Cortisol` | float     | mcg/dl    |       |           |
-| Serum Random Cortisol    | Serum Random Cortisol  | `Serum Random Cortisol` | `lab:Serum Cortisol:Serum Random Cortisol` | float     | mcg/dl    |       |           |
+| Serum Morning Cortisol    | Serum Morning Cortisol  | `Serum Morning Cortisol` | `lab:serumCortisol:serumMorningCortisol` | float     | mcg/dl    |       |           |
+| Serum Random Cortisol    | Serum Random Cortisol  | `Serum Random Cortisol` | `lab:serumCortisol:serumRandomCortisol` | float     | mcg/dl    |       |           |
 
 ## Respiratory Tract Infection Viral Profile
-* Fill-in standard key: `lab:Respiratory Tract Infection Viral Profile`
+* Fill-in standard key: `lab:respiratoryTractInfectionViralProfile`
 
 | subitem | full name        | Fill-in subitem style | Fill-in flatten style | value type | unit                | description                   |
 | ------- | ---------------- | --------------------- | --------------------- | ---------- | ------------------- | ----------------------------- |
-| Influenza A    | Influenza A  | `Influenza A` | `lab:Respiratory Tract Infection Viral Profile:Influenza A` | string     |     |       |           |
-| Influenza B    | Influenza B  | `Influenza B` | `lab:Respiratory Tract Infection Viral Profile:Influenza B` | string     |     |       |           |
-| RSV Antigen   | Respiratory Syncytial Virus Antigen  | `RSV Antigen` | `lab:Respiratory Tract Infection Viral Profile:RSV Antigen` | string     |     |       |           |
-| COVID-19 Antigen   | Coronavirus Disease 2019 Antigen  | `COVID-19 Antigen` | `lab:Respiratory Tract Infection Viral Profile:COVID-19 Antigen` | string     |     |       |           |
-| COVID-19 IgM   | Coronavirus Disease 2019 Immunoglobulin M  | `COVID-19 IgM` | `lab:Respiratory Tract Infection Viral Profile:COVID-19 IgM` | string     |     |       |           |
-| COVID-19 IgG   | Coronavirus Disease 2019 Immunoglobulin G  | `COVID-19 IgG` | `lab:Respiratory Tract Infection Viral Profile:COVID-19 IgG` | string     |     |       |           |
-| Mycoplasma IgM   | Mycoplasma Immunoglobulin M  | `Mycoplasma IgM` | `lab:Respiratory Tract Infection Viral Profile:Mycoplasma IgM` | string     |     |       |           |
-| Mycoplasma IgG   | Mycoplasma Immunoglobulin G  | `Mycoplasma IgG` | `lab:Respiratory Tract Infection Viral Profile:Mycoplasma IgG` | string     |     |       |           |
+| Influenza A    | Influenza A  | `Influenza A` | `lab:respiratoryTractInfectionViralProfile:InfluenzaA` | string     |     |       |           |
+| Influenza B    | Influenza B  | `Influenza B` | `lab:respiratoryTractInfectionViralProfile:InfluenzaB` | string     |     |       |           |
+| RSV Antigen   | Respiratory Syncytial Virus Antigen  | `RSV Antigen` | `lab:respiratoryTractInfectionViralProfile:RSV-Ag` | string     |     |       |           |
+| COVID-19 Antigen   | Coronavirus Disease 2019 Antigen  | `COVID-19 Antigen` | `lab:respiratoryTractInfectionViralProfile:COVID-19 Antigen` | string     |     |       |           |
+| COVID-19 IgM   | Coronavirus Disease 2019 Immunoglobulin M  | `COVID-19 IgM` | `lab:respiratoryTractInfectionViralProfile:COVID-19IgM` | string     |     |       |           |
+| COVID-19 IgG   | Coronavirus Disease 2019 Immunoglobulin G  | `COVID-19 IgG` | `lab:respiratoryTractInfectionViralProfile:COVID-19IgG` | string     |     |       |           |
+| Mycoplasma IgM   | Mycoplasma Immunoglobulin M  | `Mycoplasma IgM` | `lab:respiratoryTractInfectionViralProfile:MycoplasmaIgM` | string     |     |       |           |
+| Mycoplasma IgG   | Mycoplasma Immunoglobulin G  | `Mycoplasma IgG` | `lab:respiratoryTractInfectionViralProfile:MycoplasmaIgG` | string     |     |       |           |
 
 ## Iron Study
-* Fill-in standard key: `lab:Iron Study`
+* Fill-in standard key: `lab:ironStudy`
 
 | subitem | full name        | Fill-in subitem style | Fill-in flatten style | value type | unit                | description                   |
 | ------- | ---------------- | --------------------- | --------------------- | ---------- | ------------------- | ----------------------------- |
-| Serum Iron   | Serum Iron  | `SI` | `lab:Iron Study:SI` | float     | mcg/dl    |       |           |
-| TIBC   | Total Iron Binding Capacity  | `TIBC` | `lab:Iron Study:TIBC` | float     | mcg/dl    |       |           |
-| Ferritin   | Ferritin  | `Ferritin` | `lab:Iron Study:Ferritin` | float     | mcg/L    |       |           |
+| Serum Iron   | Serum Iron  | `SI` | `lab:ironStudy:SI` | float     | mcg/dl    |       |           |
+| TIBC   | Total Iron Binding Capacity  | `TIBC` | `lab:ironStudy:TIBC` | float     | mcg/dl    |       |           |
+| Ferritin   | Ferritin  | `Ferritin` | `lab:ironStudy:ferritin` | float     | mcg/L    |       |           |
 
 ## Antiglobulin Test
 * Fill-in standard key: `lab:Antiglobulin Test`
