@@ -6,6 +6,7 @@
 
 | Key   | Value Type | Required | Default | Description                                                                                                                                                |
 | ----- | ---------- | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| HN    | string(64) | Y        |         | Hospital number                                                                                                                                            |
 | TXN   | string(64) | Y        |         | Transaction number of visit or admission                                                                                                                   |
 | ICD10 | string     | Y        |         | ICD-10 code                                                                                                                                                |
 | type  | int        | Y        |         | `0` = Cancel (remove from record), `1` = Principal diagnosis, `2` = Comorbidity, `3` = Complication, `4` = Other diagnosis, `5` = External cause of injury |
@@ -18,6 +19,7 @@
 
 | Key   | Value Type | Required | Default | Description                                                       |
 | ----- | ---------- | -------- | ------- | ----------------------------------------------------------------- |
+| HN    | string(64) | Y        |         | Hospital number                                                   |
 | TXN   | string(64) | Y        |         | Transaction number of visit or admission                          |
 | ICD10 | string     | Y        |         | ICD-10 code                                                       |
 | type  | bool       | N        | `True`  | `0` or `False` = Cancel (remove from record), `1` or `True` = Add |

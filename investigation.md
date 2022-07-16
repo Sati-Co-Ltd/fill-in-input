@@ -7,6 +7,7 @@ SIO: investigation `sio.emit('investigation', data)`
 
 | Key       | Value Type | Required | Default | Description                                                     |
 | --------- | ---------- | -------- | ------- | --------------------------------------------------------------- |
+| HN        | string(64) | Y        |         | Hospital number                                                 |
 | TXN       | string(64) | Y        |         | Transaction number of visit or admission                        |
 | reportId  | string(64) | Y        |         | Unique number of each investigation                             |
 | study     | string     | Y        |         | Abbreviation of investigation                                   |

@@ -3,6 +3,7 @@
 
   | Key               | Value Type               | Required | Default | Description                                                                                                                 |
   | ----------------- | ------------------------ | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------- |
+  | HN                | string(64)               | Y        |         | Hospital number                                                                                                             |
   | TXN               | string(64)               | Y        |         | Transaction number of visit or admission. **The OPD visit number should not be duplicated with IPD admission number.   **   |
   | orderId           | string                   | Y        |         | Unique number for each row of medication or equipments                                                                      |
   | name              | string                   | Y        |         | name                                                                                                                        |
@@ -60,6 +61,7 @@
 
   | Key         | Value Type               | Required | Default | Description                                                                                                                 |
   | ----------- | ------------------------ | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------- |
+  | HN          | string(64)               | Y        |         | Hospital number                                                                                                             |
   | TXN         | string(64)               | Y        |         | Transaction number of visit or admission. **The OPD visit number should not be duplicated with IPD admission number.   **   |
   | orderId     | string                   | Y        |         | Unique number for each row of  equipments or procedure                                                                      |
   | name        | string                   | Y        |         | name                                                                                                                        |
