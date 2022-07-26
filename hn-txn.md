@@ -11,12 +11,10 @@
 ## Patient Data  
 * Need: 1st time of visit (only one time)
 * Event: `patient`
-* Hook event: `sio.on('patient', hn)`
-* Data sending: `sio.emit('patient', data, register=true)`
-* Maximum size of data per batch: 1 MB of JSON text &asymp; 1000 rows
     
 ### Arguments for hook event
-
+* Hook event: `sio.on('patient', hn)`
+  
 | Arguments | Value Type          | Required | Default | Description                                                   |
 | --------- | ------------------- | -------- | ------- | ------------------------------------------------------------- |
 | hn        | array of string(64) | Y        |         | list of HN which Fill in&reg; requires `data` in data sending |
@@ -27,6 +25,9 @@
 ```
 
 ### Parameters for data sending 
+* Data sending: `sio.emit('patient', data, register=true)`
+* Maximum size of data per batch: 1 MB of JSON text &asymp; 1000 rows
+  
 | Parameters | Value Type      | Required | Default | Description                                            |
 | ---------- | --------------- | -------- | ------- | ------------------------------------------------------ |
 | data       | array of object | Y        |         | patient data, describe below                           |
@@ -59,24 +60,21 @@ List of Object which contains ...
 ```
   
 ## Patient Secret Data
-Patient data  
 * Need: 
   * Coder loads patient data to work desk.
   * Export data requiring patient secret.
 * The Secret data will cache in Fill in&reg; within 4 hours
-* Event: `patient`
-* Hook event: `sio.on('patient', hn, txn, reason, userCode)`
-* Data sending: `sio.emit('patient', data)`
-* Maximum size of data per batch: 1 MB of JSON text &asymp; 1000 rows
+
     
 ### Arguments for hook event
-
-| Arguments | Value Type                        | Required | Default | Description                                                                                            |
-| --------- | --------------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------ |
-| hn        | array of string(64)               | Y        |         | list of HN which Fill in&reg; requires secret `data`                                                   |
-| txn       | Array&lt;string(64)&vert;null&gt; | Y        |         | list of TXN which Fill in&reg; requires secret `data`. Returns `null` if request is not related to TXN |
-| reason    | array of string(64)               | Y        |         | list of reason why Fill in&reg; requires secret `data`                                                 |
-| userCode  | array of string(64)               | Y        |         | list of user employee code who requires secret `data`. Returns user email in case of no employee code  |
+* Hook event: `sio.on('patientSecret', hn, txn, reason, userCode)`
+  
+| Arguments | Value Type                        | Required | Default | Description                                                                                                 |
+| --------- | --------------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------- |
+| hn        | array of string(64)               | Y        |         | list of HN which Fill in&reg; requires secret `data`                                                        |
+| txn       | Array&lt;string(64)&vert;null&gt; | Y        |         | list of TXN which Fill in&reg; requires secret `data`. Returns `null` if request is not related to TXN      |
+| reason    | array of string(64)               | Y        |         | list of reason why Fill in&reg; requires secret `data`                                                      |
+| userCode  | array of string(64)               | Y        |         | list of user&apos; employee code who requires secret `data`. Returns user email in case of no employee code |
   
   
 #### Example of arguments
@@ -85,11 +83,14 @@ Patient data
     "hn":["HN11111", "HN22222", "33333", "45678"],
     "txn": ["989898", "AD00125", null, "352265"],
     "reason": ["export complete th:sss:NCD menu", "coder work desk", "export high risk patient menu", "export IPD menu"],
-    "userCode": ["S123", "c999", "employee@organize.com", "2530"]
+    "userCode": ["S123", "c999", "employee@organization.com", "2530"]
 }
 ```
 
-### Parameters for data sending 
+### Parameters for data sending  
+* Data sending: `sio.emit('patientSecret', data)`
+* Maximum size of data per batch: 1 MB of JSON text &asymp; 1000 rows
+  
 | Parameters | Value Type      | Required | Default | Description                  |
 | ---------- | --------------- | -------- | ------- | ---------------------------- |
 | data       | array of object | Y        |         | patient data, describe below |
@@ -127,10 +128,36 @@ List of Object which contains ...
   
 ## Visit data
 * Need: every visit (OPD/IPD)
-* Event: patient `sio.emit('visit', data)`
+  
+    
+### Arguments for hook event
+* Hook event: `sio.on('visit', req)`
+  
+| Arguments | Value Type                                         | Required | Description                                                                                                                                            |
+| --------- | -------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| req       | Array&lt;Object&lt;string,string&vert;bool&gt;&gt; | Y        | list of `HN` (string), `TXN` (string) and `IPD` (`true` or `1` if IPD case, `false` or `0` for OPD) which Fill in&reg; requires `data` in data sending |
+  
+
+#### Example of `req`
+```JSONC
+[
+    {"HN":"55/5555", "TXN": "A90909", "IPD": false},
+    {"HN":"315646", "TXN": "566410909", "IPD": true}
+]
+```
+  
+
+### Parameters for data sending  
+* Data sending: `sio.emit('visit', data, register=true)`
 * Maximum size of data per batch: 1 MB of JSON text &asymp; 300-500 rows
   
-### Data  
+| Parameters | Value Type      | Required | Default | Description                                            |
+| ---------- | --------------- | -------- | ------- | ------------------------------------------------------ |
+| data       | array of object | Y        |         | TXN data, describe below                               |
+| register   | bool            | N        | `true`  | `True` or `1` = add or update, `False` or `0` = delete |
+  
+
+#### Structure of `data`  
 List of Object which contains ...  
 
   | Key             | Value Type           | Required | Default                     | Description                                                                                                               |
@@ -150,7 +177,7 @@ List of Object which contains ...
 
 
 
-### Example
+#### Example of `data`
 ```JSONC
 [
     {
@@ -185,19 +212,23 @@ List of Object which contains ...
 ]
 ```
   
-## Register, Deregister to Special Records  
+## Register and deregister to Special Records  
 To register or deregister patient to special records, i.e. chronic disease, one day surgery, well-baby clinic, antenatal care  
 * Need: depend on the criteria of the record
-* Event: special_record `sio.emit('special_record', recordName, register, data)`
+* Hook event: `sio.on('specialRecord', req)`
+
+  
+### Parameters for data sending  
+* Data sending: `sio.emit('specialRecord', recordName, data, register=true)`
 * Maximum size of data per batch: 1 MB of JSON text &asymp; 300-500 rows
   
-## Parameters
-| Parameters | Value Type | Required | Default | Description                                           |
-| ---------- | ---------- | -------- | ------- | ----------------------------------------------------- |
-| recordName | string     | Y        |         | [Special record abbreviation](special-record.md)      |
-| register   | bool       | Y        |         | `True` or `1` = register, `False` or `0` = deregister |
+| Parameters | Value Type      | Required | Default | Description                                           |
+| ---------- | --------------- | -------- | ------- | ----------------------------------------------------- |
+| recordName | string          | Y        |         | [Special record abbreviation](special-record.md)      |
+| data       | array of object | Y        |         | record data, describe below                           |
+| register   | bool            | N        | `True`  | `True` or `1` = register, `False` or `0` = deregister |
 
-### Data  
+#### Structure of `data`  
 List of Object which contains ...  
 
   | Key       | Value Type | Required | Default | Description                                                                    |
@@ -209,7 +240,7 @@ List of Object which contains ...
 
 
 
-### Example
+#### Example of `data`
 ```JSONC
 [
     {
