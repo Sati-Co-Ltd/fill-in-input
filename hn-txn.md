@@ -2,7 +2,7 @@
 
 ## Abbreviation
 * sio: Socket.IO
-* `sio.emit({event}, {data})` : method to send data as an event
+* `sio.emit({event}, ...{data})` : method to send data as an event
 
 ## References
 * [FHIR](https://hl7.org/FHIR/)
@@ -10,10 +10,29 @@
 
 ## Patient Data  
 * Need: 1st time of visit (only one time)
-* Event: patient `sio.emit('patient', data)`
+* Event: `patient`
+* Hook event: `sio.on('patient', hn)`
+* Data sending: `sio.emit('patient', data, register=true)`
 * Maximum size of data per batch: 1 MB of JSON text &asymp; 1000 rows
+    
+### Arguments for hook event
+
+| Arguments | Value Type          | Required | Default | Description                                                   |
+| --------- | ------------------- | -------- | ------- | ------------------------------------------------------------- |
+| hn        | array of string(64) | Y        |         | list of HN which Fill in&reg; requires `data` in data sending |
   
-### Data  
+#### Example of `hn`
+```JSONC
+["HN11111", "HN22222", "33333", "45678"]
+```
+
+### Parameters for data sending 
+| Parameters | Value Type      | Required | Default | Description                                            |
+| ---------- | --------------- | -------- | ------- | ------------------------------------------------------ |
+| data       | array of object | Y        |         | patient data, describe below                           |
+| register   | bool            | Y        | `true`  | `True` or `1` = add or update, `False` or `0` = delete |
+  
+#### Structure of `data`  
 List of Object which contains ...  
   
 | Key       | Value Type             | Required | Default | Description                                                                                                                                                    |
@@ -23,7 +42,7 @@ List of Object which contains ...
 | gender    | bool                   | Y        |         | `True` or `1` = male, `False` or `0` = female                                                                                                                  |
 | name      | string                 | N        | `NULL`  | Full name which is temporary stored in cloud                                                                                                                   |
 
-### Example
+#### Example of `data`
 ```JSONC
 [
     {
@@ -39,6 +58,72 @@ List of Object which contains ...
 ]
 ```
   
+## Patient Secret Data
+Patient data  
+* Need: 
+  * Coder loads patient data to work desk.
+  * Export data requiring patient secret.
+* The Secret data will cache in Fill in&reg; within 4 hours
+* Event: `patient`
+* Hook event: `sio.on('patient', hn, txn, reason, userCode)`
+* Data sending: `sio.emit('patient', data)`
+* Maximum size of data per batch: 1 MB of JSON text &asymp; 1000 rows
+    
+### Arguments for hook event
+
+| Arguments | Value Type                        | Required | Default | Description                                                                                            |
+| --------- | --------------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------ |
+| hn        | array of string(64)               | Y        |         | list of HN which Fill in&reg; requires secret `data`                                                   |
+| txn       | Array&lt;string(64)&vert;null&gt; | Y        |         | list of TXN which Fill in&reg; requires secret `data`. Returns `null` if request is not related to TXN |
+| reason    | array of string(64)               | Y        |         | list of reason why Fill in&reg; requires secret `data`                                                 |
+| userCode  | array of string(64)               | Y        |         | list of user employee code who requires secret `data`. Returns user email in case of no employee code  |
+  
+  
+#### Example of arguments
+```JSONC
+{
+    "hn":["HN11111", "HN22222", "33333", "45678"],
+    "txn": ["989898", "AD00125", null, "352265"],
+    "reason": ["export complete th:sss:NCD menu", "coder work desk", "export high risk patient menu", "export IPD menu"],
+    "userCode": ["S123", "c999", "employee@organize.com", "2530"]
+}
+```
+
+### Parameters for data sending 
+| Parameters | Value Type      | Required | Default | Description                  |
+| ---------- | --------------- | -------- | ------- | ---------------------------- |
+| data       | array of object | Y        |         | patient data, describe below |
+  
+#### Structure of `data`  
+List of Object which contains ...  
+  
+| Key        | Value Type | Required | Default | Description     |
+| ---------- | ---------- | -------- | ------- | --------------- |
+| HN         | string(64) | Y        |         | Hospital number |
+| title      | string(64) | N        | `NULL`  | title of name   |
+| firstname  | string(64) | Y        |         | First name      |
+| middlename | string(64) | N        | `NULL`  | Middle name     |
+| lastname   | string(64) | Y        |         | Last name       |
+  
+
+#### Example of `data`
+```JSONC
+[
+    {
+        "HN": "01234",
+        "title": "นาย",
+        "firstname": "กกกกกกกก",
+        "lastname": "ขขขขขขข"
+    },
+    {
+        "HN": "56789",
+        "title": "Miss",
+        "firstname": "Abcdefg",
+        "middlename": "Hijklmn",
+        "lastname": "Opqrst Uvwxyz"
+    }
+]
+```
   
 ## Visit data
 * Need: every visit (OPD/IPD)
