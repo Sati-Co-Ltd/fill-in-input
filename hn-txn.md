@@ -215,8 +215,7 @@ List of Object which contains ...
 ## Register and deregister to Special Records  
 To register or deregister patient to special records, i.e. chronic disease, one day surgery, well-baby clinic, antenatal care  
 * Need: depend on the criteria of the record
-* Hook event: `sio.on('specialRecord', req)`
-
+  
   
 ### Parameters for data sending  
 * Data sending: `sio.emit('specialRecord', recordName, data, register=true)`
