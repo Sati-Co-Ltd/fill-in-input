@@ -1,5 +1,31 @@
 # Fill-in: Standard Format for Patient, Visit, and Special Record
 
+- [Fill-in: Standard Format for Patient, Visit, and Special Record](#fill-in-standard-format-for-patient-visit-and-special-record)
+  - [Abbreviation](#abbreviation)
+  - [References](#references)
+  - [Patient Data](#patient-data)
+    - [Arguments for hook event](#arguments-for-hook-event)
+      - [Example of `hn`](#example-of-hn)
+    - [Parameters for data sending](#parameters-for-data-sending)
+      - [Structure of `data`](#structure-of-data)
+      - [Example of `data`](#example-of-data)
+  - [Patient Secret Data](#patient-secret-data)
+    - [Arguments for hook event](#arguments-for-hook-event-1)
+      - [Example of arguments](#example-of-arguments)
+    - [Parameters for data sending](#parameters-for-data-sending-1)
+      - [Structure of `data`](#structure-of-data-1)
+      - [Example of `data`](#example-of-data-1)
+  - [Visit data](#visit-data)
+    - [Arguments for hook event](#arguments-for-hook-event-2)
+      - [Example of `req`](#example-of-req)
+    - [Parameters for data sending](#parameters-for-data-sending-2)
+      - [Structure of `data`](#structure-of-data-2)
+      - [Example of `data`](#example-of-data-2)
+  - [Register and deregister to Special Records](#register-and-deregister-to-special-records)
+    - [Parameters for data sending](#parameters-for-data-sending-3)
+      - [Structure of `data`](#structure-of-data-3)
+      - [Example of `data`](#example-of-data-3)
+
 ## Abbreviation
 * sio: Socket.IO
 * `sio.emit({event}, ...{data})` : method to send data as an event
@@ -10,6 +36,8 @@
 
 ## Patient Data  
 * Need: 1st time of visit (only one time)
+* URL: `https://fill-in.sati.co.th/hn-txn`
+* Socket.IO namespace: `/`
 * Event: `patient`
     
 ### Arguments for hook event
@@ -89,6 +117,8 @@ List of Object which contains ...
 
 ### Parameters for data sending  
 * Data sending: `sio.emit('patientSecret', data)`
+* URL: `https://fill-in.sati.co.th/secret`
+* Socket.IO namespace: `/`
 * Maximum size of data per batch: 1 MB of JSON text &asymp; 1000 rows
   
 | Parameters | Value Type      | Required | Default | Description                  |
@@ -128,6 +158,8 @@ List of Object which contains ...
   
 ## Visit data
 * Need: every visit (OPD/IPD)
+* URL: `https://fill-in.sati.co.th/hn-txn`
+* Socket.IO namespace: `/`
   
     
 ### Arguments for hook event
@@ -215,6 +247,8 @@ List of Object which contains ...
 ## Register and deregister to Special Records  
 To register or deregister patient to special records, i.e. chronic disease, one day surgery, well-baby clinic, antenatal care  
 * Need: depend on the criteria of the record
+* URL: `https://fill-in.sati.co.th/record`
+* Socket.IO namespace: `/`
   
   
 ### Parameters for data sending  
