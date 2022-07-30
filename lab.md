@@ -70,18 +70,18 @@ Prefix is `lab:`. Study name and subitem follows the prefix respectively, i.e. `
 
 
 ## Blood Urea Nitrogen and Creatine
-* Fill-in standard key: `lab:BloodNitrogen`
+* Fill-in standard key: `lab:bloodNitrogen`
 * Value type: float
 * Unit: mg/g
 * Description:
 
 | subitem             | full name                            | Fill-in subitem style | Fill-in flatten style    | value type | unit   | description |
 | ------------------- | ------------------------------------ | --------------------- | ------------------------ | ---------- | ------ | ----------- |
-| Blood Urea Nitrogen | Blood Urea Nitrogen                  | `BUN`                 | `lab:BloodNitrogen:BUN`  | float      | mg/dl  |             |  |
-| Serum Creatinine    | Serum Creatinine                     | `Cr`                  | `lab:BloodNitrogen:Cr`   | float      | mg/dl  |             |  |
-| eGFR                | Estimated Glomerular Filtration Rate | `eGFR`                | `lab:BloodNitrogen:eGFR` | float      | ml/min |             |  |
-| CrCl                | Creatine Clearance Rate              | `CrCl`                | `lab:BloodNitrogen:eGFR` | float      | ml/min |             |  |
-| Uric acid           | Uric acid                            | `uricAcid`                | `lab:BloodNitrogen:uricAcid` | float      | mg/dl  |             |  |
+| Blood Urea Nitrogen | Blood Urea Nitrogen                  | `BUN`                 | `lab:bloodNitrogen:BUN`  | float      | mg/dl  |             |  |
+| Serum Creatinine    | Serum Creatinine                     | `Cr`                  | `lab:bloodNitrogen:Cr`   | float      | mg/dl  |             |  |
+| eGFR                | Estimated Glomerular Filtration Rate | `eGFR`                | `lab:bloodNitrogen:eGFR` | float      | ml/min |             |  |
+| CrCl                | Creatine Clearance Rate              | `CrCl`                | `lab:bloodNitrogen:eGFR` | float      | ml/min |             |  |
+| Uric acid           | Uric acid                            | `uricAcid`                | `lab:bloodNitrogen:uricAcid` | float      | mg/dl  |             |  |
 
 
 
