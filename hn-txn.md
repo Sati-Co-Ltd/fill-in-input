@@ -5,24 +5,29 @@
   - [References](#references)
   - [Patient Data](#patient-data)
     - [Arguments for hook event](#arguments-for-hook-event)
-      - [Example of `hn`](#example-of-hn)
+      - [Example of `HN`](#example-of-hn)
     - [Parameters for data sending](#parameters-for-data-sending)
       - [Structure of `data`](#structure-of-data)
       - [Example of `data`](#example-of-data)
   - [Patient Secret Data](#patient-secret-data)
     - [Arguments for hook event](#arguments-for-hook-event-1)
+      - [Object structure of `req` (request secret)](#object-structure-of-req-request-secret)
       - [Example of arguments](#example-of-arguments)
     - [Parameters for data sending](#parameters-for-data-sending-1)
       - [Structure of `data`](#structure-of-data-1)
       - [Example of `data`](#example-of-data-1)
   - [Visit data](#visit-data)
     - [Arguments for hook event](#arguments-for-hook-event-2)
+      - [Object structure of `req` (request visit data)](#object-structure-of-req-request-visit-data)
       - [Example of `req`](#example-of-req)
-    - [Parameters for data sending](#parameters-for-data-sending-2)
+    - [Parameters for data sending (Thai visit format)](#parameters-for-data-sending-thai-visit-format)
       - [Structure of `data`](#structure-of-data-2)
       - [Example of `data`](#example-of-data-2)
   - [Register and deregister to Special Records](#register-and-deregister-to-special-records)
-    - [Parameters for data sending](#parameters-for-data-sending-3)
+    - [Arguments for hook event](#arguments-for-hook-event-3)
+      - [Object structure of `req` (request visit data)](#object-structure-of-req-request-visit-data-1)
+      - [Example of `req`](#example-of-req-1)
+    - [Parameters for data sending](#parameters-for-data-sending-2)
       - [Structure of `data`](#structure-of-data-3)
       - [Example of `data`](#example-of-data-3)
 
@@ -41,15 +46,15 @@
 * Event: `patient`
     
 ### Arguments for hook event
-* Hook event: `sio.on('patient', hn)`
+* Hook event: `sio.on('patient', HN)`
   
 | Arguments | Value Type          | Required | Default | Description                                                   |
 | --------- | ------------------- | -------- | ------- | ------------------------------------------------------------- |
-| hn        | array of string(64) | Y        |         | list of HN which Fill in&reg; requires `data` in data sending |
+| HN        | array of string(64) | Y        |         | list of HN which Fill in&reg; requires `data` in data sending |
   
-#### Example of `hn`
+#### Example of `HN`
 ```JSONC
-["HN11111", "HN22222", "33333", "45678"]
+["HN11111", "r22222", "33333", "45678"]
 ```
 
 ### Parameters for data sending 
@@ -70,7 +75,8 @@ List of Object which contains ...
 | birthDate | string(date, datetime) | Y        |         | Date or datetime of birth in SQL format (`YYYY-mm-dd` or `YYYY-MM-dd HH:mm:ss`) or ISO8601 format (`YYYY-mm-ddTHH:mm:ss.sssz` or `YYYY-mm-ddTHH:mm:ss.sss+zz`) |
 | gender    | bool                   | Y        |         | `True` or `1` = male, `False` or `0` = female                                                                                                                  |
 | name      | string                 | N        | `NULL`  | Full name which is temporary stored in cloud                                                                                                                   |
-
+  
+  
 #### Example of `data`
 ```JSONC
 [
@@ -96,26 +102,31 @@ List of Object which contains ...
 
     
 ### Arguments for hook event
-* Hook event: `sio.on('patientSecret', hn, txn, reason, userCode)`
+* Hook event: `sio.on('patientSecret', req)`
   
-| Arguments | Value Type                        | Required | Default | Description                                                                                                 |
-| --------- | --------------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------- |
-| hn        | array of string(64)               | Y        |         | list of HN which Fill in&reg; requires secret `data`                                                        |
-| txn       | Array&lt;string(64)&vert;null&gt; | Y        |         | list of TXN which Fill in&reg; requires secret `data`. Returns `null` if request is not related to TXN      |
-| reason    | array of string(64)               | Y        |         | list of reason why Fill in&reg; requires secret `data`                                                      |
-| userCode  | array of string(64)               | Y        |         | list of user&apos; employee code who requires secret `data`. Returns user email in case of no employee code |
+| Arguments | Value Type      | Required | Description            |
+| --------- | --------------- | -------- | ---------------------- |
+| req       | array of object | Y        | list of request secret |
+  
+
+#### Object structure of `req` (request secret)
+
+| Arguments | Value Type           | Required | Default | Description                                                   |
+| --------- | -------------------- | -------- | ------- | ------------------------------------------------------------- |
+| HN        | array of string(64)  | Y        |         | HN which Fill in&reg; requires secret `data`                  |
+| TXN       | string(64)&vert;null | N        | `null`  | TXN which Fill in&reg; requires secret `data`.                |
+| reason    | string(64)           | Y        |         | list of reason why Fill in&reg; requires secret `data`        |
+| userCode  | string(64)           | Y        |         | user&apos; employee code or email who requires secret `data`. |
   
   
 #### Example of arguments
 ```JSONC
-{
-    "hn":["HN11111", "HN22222", "33333", "45678"],
-    "txn": ["989898", "AD00125", null, "352265"],
-    "reason": ["export complete th:sss:NCD menu", "coder work desk", "export high risk patient menu", "export IPD menu"],
-    "userCode": ["S123", "c999", "employee@organization.com", "2530"]
-}
+[
+    {"HN":"55/5555", "TXN": "A90909", "reason":"export complete th:sss:NCD menu", "userCode":"S123"},
+    {"HN":"e5555", "TXN": "0909", "reason":"coder work desk", "userCode":"employee@organization.com"}
+]
 ```
-
+  
 ### Parameters for data sending  
 * Data sending: `sio.emit('patientSecret', data)`
 * URL: `https://fill-in.sati.co.th/secret`
@@ -166,11 +177,19 @@ List of Object which contains ...
 ### Arguments for hook event
 * Hook event: `sio.on('visit', req)`
   
-| Arguments | Value Type                                         | Required | Description                                                                                                                                            |
-| --------- | -------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| req       | Array&lt;Object&lt;string,string&vert;bool&gt;&gt; | Y        | list of `HN` (string), `TXN` (string) and `IPD` (`true` or `1` if IPD case, `false` or `0` for OPD) which Fill in&reg; requires `data` in data sending |
+| Arguments | Value Type                                         | Required | Description                |
+| --------- | -------------------------------------------------- | -------- | -------------------------- |
+| req       | Array&lt;Object&lt;string,string&vert;bool&gt;&gt; | Y        | list of request visit data |
   
+#### Object structure of `req` (request visit data)
 
+| Arguments | Value Type          | Required | Default | Description                                         |
+| --------- | ------------------- | -------- | ------- | --------------------------------------------------- |
+| HN        | array of string(64) | Y        |         | HN which Fill in&reg; requires `data`               |
+| TXN       | string(64)          | Y        |         | TXN which Fill in&reg; requires `data`.             |
+| IPD       | bool                | Y        |         | (`true` or `1` if IPD case, `false` or `0` for OPD) |
+  
+  
 #### Example of `req`
 ```JSONC
 [
@@ -180,8 +199,8 @@ List of Object which contains ...
 ```
   
 
-### Parameters for data sending  
-* Data sending: `sio.emit('visit', data, register=true)`
+### Parameters for data sending (Thai visit format)  
+* Data sending: `sio.emit('thVisit', data, register=true)`
 * Maximum size of data per batch: 1 MB of JSON text &asymp; 300-500 rows
   
 | Parameters | Value Type      | Required | Default | Description                                            |
@@ -251,7 +270,32 @@ To register or deregister patient to special records, i.e. chronic disease, one 
 * URL: `https://fill-in.sati.co.th/record`
 * Socket.IO namespace: `/`
   
+### Arguments for hook event
+* Hook event: `sio.on('specialRecord', req)`
+* Only autopilot mode
   
+| Arguments | Value Type                                         | Required | Description                         |
+| --------- | -------------------------------------------------- | -------- | ----------------------------------- |
+| req       | Array&lt;Object&lt;string,string&vert;bool&gt;&gt; | Y        | list of request special record data |
+  
+#### Object structure of `req` (request visit data)
+
+| Arguments | Value Type          | Required | Description                                   |
+| --------- | ------------------- | -------- | --------------------------------------------- |
+| HN        | array of string(64) | Y        | HN which Fill in&reg; requires `data`         |
+| TXN       | string(64)          | Y        | TXN which Fill in&reg; requires `data`.       |
+| reason    | string(64)          | Y        | list of reason why Fill in&reg; requires code |
+| choice    | array of boolean    | N        | list of choice                                |
+  
+  
+#### Example of `req`
+```JSONC
+[
+    {"HN":"55/5555", "TXN": "A90909", "reason": "1st diagnosis for DM. Register to special record?", "choice": [true, false]},
+    {"HN":"315646", "TXN": "566410909", "reason": "Receive drug for HT. Register to special record?", "choice": [true, false]}
+]
+```
+    
 ### Parameters for data sending  
 * Data sending: `sio.emit('specialRecord', recordName, data, register=true)`
 * Maximum size of data per batch: 1 MB of JSON text &asymp; 300-500 rows
