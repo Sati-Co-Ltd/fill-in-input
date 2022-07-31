@@ -1,5 +1,24 @@
 # Diagnosis and Procedure Code
-
+- [Diagnosis and Procedure Code](#diagnosis-and-procedure-code)
+  - [Diagnosis Code](#diagnosis-code)
+    - [Arguments for hook event](#arguments-for-hook-event)
+      - [Object structure of `req`](#object-structure-of-req)
+      - [Example of choice](#example-of-choice)
+    - [Parameters for data sending](#parameters-for-data-sending)
+      - [Parameters](#parameters)
+      - [Structure of `data`](#structure-of-data)
+    - [Type of Diagnosis code by Thai Medical Record](#type-of-diagnosis-code-by-thai-medical-record)
+    - [Example of `data`](#example-of-data)
+  - [Procedure Code](#procedure-code)
+    - [Arguments for hook event](#arguments-for-hook-event-1)
+      - [Object structure of `req`](#object-structure-of-req-1)
+      - [Example of choice](#example-of-choice-1)
+    - [Parameters for data sending](#parameters-for-data-sending-1)
+      - [Parameters](#parameters-1)
+      - [Structure of `data`](#structure-of-data-1)
+    - [Example of `data`](#example-of-data-1)
+  - [Accepted Coding standard](#accepted-coding-standard)
+    - [Thai](#thai)
 
 ## Diagnosis Code
 * Need: every visit (OPD/IPD)
@@ -8,18 +27,33 @@
   
     
 ### Arguments for hook event
-* Hook event: `sio.on('diagnosisCode', hn, txn, reason, choice)`
+* Hook event: `sio.on('diagnosisCode', req)`
+* Only autopilot mode
   
-| Arguments | Value Type                | Required | Description                                   |
-| --------- | ------------------------- | -------- | --------------------------------------------- |
-| hn        | string(64)                | Y        | list of HN which Fill in&reg; requires code   |
-| txn       | string(64)&vert;null      | Y        | list of TXN which Fill in&reg; requires code. |
-| reason    | string(64)                | Y        | list of reason why Fill in&reg; requires code |
-| choice    | Object of array of string | N        | Key: Coding standard, value: list of choice   |
+  
+| Arguments | Value Type                                         | Required | Description          |
+| --------- | -------------------------------------------------- | -------- | -------------------- |
+| req       | Array&lt;Object&lt;string,string&vert;bool&gt;&gt; | Y        | list of request code |
+  
+#### Object structure of `req`
+  
+| Arguments | Value Type                | Required | Description                                 |
+| --------- | ------------------------- | -------- | ------------------------------------------- |
+| hn        | string(64)                | Y        | HN which Fill in&reg; requires code         |
+| txn       | string(64)&vert;null      | Y        | TXN which Fill in&reg; requires code.       |
+| reason    | string(64)                | Y        | reason why Fill in&reg; requires code       |
+| choice    | Object of array of string | N        | Key: Coding standard, value: list of choice |
   
 #### Example of choice
 ```JSONC
-{"ICD10-2016": ["E119","E129"], "ICD10-TM-2016": ["E119","E129"]}
+[
+    {
+        "HN": "56/9875",
+        "TXN": "A9856",
+        "reason": "Add diagnosis code? Patient receives metformin.",
+        "choice": {"ICD10-2016": ["E119","E129"], "ICD10-TM-2016": ["E119","E129"]}
+    }
+]
 ```
   
 ### Parameters for data sending  
@@ -98,18 +132,33 @@ List of Object which contains ...
   
     
 ### Arguments for hook event
-* Hook event: `sio.on('procedureCode', hn, txn, reason, choice)`
+* Hook event: `sio.on('procedureCode', req)`
+* Only autopilot mode
   
-| Arguments | Value Type                | Required | Description                                   |
-| --------- | ------------------------- | -------- | --------------------------------------------- |
-| hn        | string(64)                | Y        | list of HN which Fill in&reg; requires code   |
-| txn       | string(64)&vert;null      | Y        | list of TXN which Fill in&reg; requires code. |
-| reason    | string(64)                | Y        | list of reason why Fill in&reg; requires code |
-| choice    | Object of array of string | N        | Key: Coding standard, value: list of choice   |
+  
+| Arguments | Value Type                                         | Required | Description          |
+| --------- | -------------------------------------------------- | -------- | -------------------- |
+| req       | Array&lt;Object&lt;string,string&vert;bool&gt;&gt; | Y        | list of request code |
+  
+#### Object structure of `req`
+  
+| Arguments | Value Type                | Required | Description                                 |
+| --------- | ------------------------- | -------- | ------------------------------------------- |
+| HN        | string(64)                | Y        | HN which Fill in&reg; requires code         |
+| TXN       | string(64)&vert;null      | Y        | TXN which Fill in&reg; requires code.       |
+| reason    | string(64)                | Y        | reason why Fill in&reg; requires code       |
+| choice    | Object of array of string | N        | Key: Coding standard, value: list of choice |
   
 #### Example of choice
 ```JSONC
-{"ICD9-CM-2015": ["8611","8622"]}
+[
+    {
+        "HN": "56/9875",
+        "TXN": "A9856",
+        "reason": "Add Procedure code? Patient has order of biopsy in HIS.",
+        "choice": {"ICD9-CM-2015": ["8611","8622"]}
+    }
+]
 ```
   
 ### Parameters for data sending  
