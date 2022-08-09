@@ -24,9 +24,12 @@
       - [Structure of `data`](#structure-of-data-2)
       - [Example of `data`](#example-of-data-2)
   - [Register and deregister to Special Records](#register-and-deregister-to-special-records)
-    - [Arguments for hook event](#arguments-for-hook-event-3)
+    - [Arguments for hook autopilot event](#arguments-for-hook-autopilot-event)
       - [Object structure of `req` (request visit data)](#object-structure-of-req-request-visit-data-1)
       - [Example of `req`](#example-of-req-1)
+    - [Arguments for hook coder rewrite event](#arguments-for-hook-coder-rewrite-event)
+      - [Object structure of `req` (request visit data)](#object-structure-of-req-request-visit-data-2)
+      - [Example of `req`](#example-of-req-2)
     - [Parameters for data sending](#parameters-for-data-sending-2)
       - [Structure of `data`](#structure-of-data-3)
       - [Example of `data`](#example-of-data-3)
@@ -46,6 +49,7 @@
 * Event: `patient`
     
 ### Arguments for hook event
+* Socket.IO namespace: `/`
 * Hook event: `sio.on('patient', HN)`
   
 | Arguments | Value Type          | Required | Default | Description                                                              |
@@ -102,6 +106,7 @@ List of Object which contains ...
 
     
 ### Arguments for hook event
+* Socket.IO namespace: `/`
 * Hook event: `sio.on('patientSecret', req)`
   
 | Arguments | Value Type      | Required | Description            |
@@ -116,18 +121,19 @@ List of Object which contains ...
 | HN        | array of string(64)  | Y        |         | Hashed HN which Fill in&reg; requires secret `data`           |
 | TXN       | string(64)&vert;null | N        | `null`  | Hashed TXN which Fill in&reg; requires secret `data`.         |
 | reason    | string(64)           | Y        |         | list of reason why Fill in&reg; requires secret `data`        |
-| userCode  | string(64)           | Y        |         | user&apos; employee code or email who requires secret `data`. |
+| staff     | string(64)           | Y        |         | user&apos; employee code or email who requires secret `data`. |
   
   
 #### Example of arguments
 ```JSONC
 [
-    {"HN":"55/5555", "TXN": "A90909", "reason":"export complete th:sss:NCD menu", "userCode":"S123"},
-    {"HN":"e5555", "TXN": "0909", "reason":"coder work desk", "userCode":"employee@organization.com"}
+    {"HN":"55/5555", "TXN": "A90909", "reason":"export complete th:sss:NCD menu", "staff":"S123"},
+    {"HN":"e5555", "TXN": "0909", "reason":"coder work desk", "staff":"employee@organization.com"}
 ]
 ```
   
 ### Parameters for data sending  
+* Socket.IO namespace: `/`
 * Data sending: `sio.emit('patientSecret', data)`
 * URL: `https://fill-in.sati.co.th/secret`
 * Socket.IO namespace: `/`
@@ -182,6 +188,7 @@ List of Object which contains ...
   
     
 ### Arguments for hook event
+* Socket.IO namespace: `/`
 * Hook event: `sio.on('visit', req)`
   
 | Arguments | Value Type                                         | Required | Description                |
@@ -207,6 +214,7 @@ List of Object which contains ...
   
 
 ### Parameters for data sending (Thai visit format)  
+* Socket.IO namespace: `/`
 * Data sending: `sio.emit('thVisit', data, register=true)`
 * Maximum size of data per batch: 1 MB of JSON text &asymp; 300-500 rows
   
@@ -277,7 +285,8 @@ To register or deregister patient to special records, i.e. chronic disease, one 
 * URL: `https://fill-in.sati.co.th/record`
 * Socket.IO namespace: `/`
   
-### Arguments for hook event
+### Arguments for hook autopilot event
+* Socket.IO namespace: `/autopilot`
 * Hook event: `sio.on('specialRecord', req)`
 * Only autopilot mode
   
@@ -298,11 +307,41 @@ To register or deregister patient to special records, i.e. chronic disease, one 
 #### Example of `req`
 ```JSONC
 [
-    {"HN":"55/5555", "TXN": "A90909", "reason": "1st diagnosis for DM. Register to special record?", "choice": [true, false]},
-    {"HN":"315646", "TXN": "566410909", "reason": "Receive drug for HT. Register to special record?", "choice": [true, false]}
+    {"HN":"55/5555", "TXN": "A90909", "reason": "1st diagnosis for DM. Register to special record?", "choice": ["th:sss:NCD:DM", null]},
+    {"HN":"315646", "TXN": "566410909", "reason": "Receive drug for HT. Register to special record?", "choice": ["th:sss:NCD:HT", null]}
 ]
 ```
     
+  
+### Arguments for hook coder rewrite event
+* Socket.IO namespace: `/rewrite`
+* Hook event: `sio.on('specialRecord', req)`
+* Rewrite items 
+  
+| Arguments | Value Type                                         | Required | Description                         |
+| --------- | -------------------------------------------------- | -------- | ----------------------------------- |
+| req       | Array&lt;Object&lt;string,string&vert;bool&gt;&gt; | Y        | list of request special record data |
+  
+#### Object structure of `req` (request visit data)
+
+| Arguments | Value Type          | Required | Description                                                                           |
+| --------- | ------------------- | -------- | ------------------------------------------------------------------------------------- |
+| HN        | array of string(64) | Y        | hashed HN which Fill in&reg; requires `data`                                          |
+| TXN       | string(64)          | Y        | hashed TXN which Fill in&reg; requires `data`.                                        |
+| reason    | string(64)          | Y        | list of reason why Fill in&reg; requires code                                         |
+| staff     | string(64)          | N        | user (staff or employee) &apos;s code who rewrite data, null for fill-in autocomplete |
+| key       | string              | Y        | key of item to write back e.g. `"th:sss:NCD:DM"`                                      |
+| ~~value~~ | Any                 | N        | ~~value of item to write back~~                                                       |
+  
+#### Example of `req`
+```JSONC
+[
+    {"HN":"55/5555", "TXN": "A90909", "reason": "Coder ({staff}) added criteria for 1st diagnosis for DM.", "key": "th:sss:NCD:DM", "staff":"C1234"},
+    {"HN":"315646", "TXN": "566410909", "reason": "The Fill-in autocomplete added because the patient receive drug for HT.", "key": "th:sss:NCD:HT"}
+]
+```
+   
+
 ### Parameters for data sending  
 * Data sending: `sio.emit('specialRecord', recordName, data, register=true)`
 * Maximum size of data per batch: 1 MB of JSON text &asymp; 300-500 rows
