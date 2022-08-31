@@ -36,7 +36,7 @@ Prefix is `lab:`. Study name and subitem follows the prefix respectively, i.e. `
 | decimal, float | number with decimal point which will be parsed to exacted precision BigDecimal                                                        | `1.23`         |
 | boolean        | positive or negative value: `true`, `1`, any string contains`"+"` or `"pos"`,  `false`, `0`, any string contains`"-"` or `"neg"`      | `true`         |
 | grade          | negative, `trace`, 1+: any string contains `1`, 2+: any string contains `2`, 3+: any string contains `3`, 4+: any string contains `4` |
-| range          | decimal or decimal range                                                                                                              | `0 - 1`, `3-5` |
+| range          | decimal or decimal range. The Fill in usually use maximum number to determine the value                                               | `0 - 1`, `3-5` |
 | string         | Any string                                                                                                                            | `"yellow"`     |
 
 ## Complete Blood Count (CBC)
