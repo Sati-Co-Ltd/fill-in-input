@@ -144,16 +144,16 @@ Prefix is `lab:`. Study name and subitem follows the prefix respectively, i.e. `
 | Direct Bilirubin     | Direct Bilirubine          | `DB`                  | `lab:LFT:DB`          | decimal    | mg/dl |             |
 
 ## Hepatitis Profile 
-* Fill-in standard key: `lab:HepatitisProfile`
+* Fill-in standard key: `lab:hepatitisProfile`
 
 | subitem  | full name                    | Fill-in subitem style | Fill-in flatten style           | value type | unit | description |
 | -------- | ---------------------------- | --------------------- | ------------------------------- | ---------- | ---- | ----------- |
-| HBsAg    | Hepatitis B Surface Antigen  | `HBsAg`               | `lab:HepatitisProfile:HBsAg`    | boolean    |      |             |
-| Anti-HBs | Hepatitis B Surface Antibody | `Anti-HBs`            | `lab:HepatitisProfile:AntiHBs`  | boolean    |      |             |
-| HBcAg    | Hepatitis B Core Antigen     | `HBcAg`               | `lab:HepatitisProfile:HBcAg`    | boolean    |      |             |
-| Anti-HBc | Hepatitis B Core Antibody    | `Anti-HBc`            | `lab:HepatitisProfile:AntiHBsc` | boolean    |      |             |
-| HBeAg    | Hepatitis B e-Antigen        | `HBeAg`               | `lab:HepatitisProfile:HBeAg`    | boolean    |      |             |
-| Anti HCV | Hepatitis C Antibody         | `Anti HCV`            | `lab:HepatitisProfile:AntiHCV`  | boolean    |      |             |
+| HBsAg    | Hepatitis B Surface Antigen  | `HBsAg`               | `lab:hepatitisProfile:HBsAg`    | boolean    |      |             |
+| Anti-HBs | Hepatitis B Surface Antibody | `Anti-HBs`            | `lab:hepatitisProfile:AntiHBs`  | boolean    |      |             |
+| HBcAg    | Hepatitis B Core Antigen     | `HBcAg`               | `lab:hepatitisProfile:HBcAg`    | boolean    |      |             |
+| Anti-HBc | Hepatitis B Core Antibody    | `Anti-HBc`            | `lab:hepatitisProfile:AntiHBsc` | boolean    |      |             |
+| HBeAg    | Hepatitis B e-Antigen        | `HBeAg`               | `lab:hepatitisProfile:HBeAg`    | boolean    |      |             |
+| Anti HCV | Hepatitis C Antibody         | `Anti HCV`            | `lab:hepatitisProfile:AntiHCV`  | boolean    |      |             |
 
 ## Blood Sugar Profile 
 * Fill-in standard key: `lab:bloodSugar`
