@@ -136,7 +136,7 @@ Prefix is `lab:`. Study name and subitem follows the prefix respectively, i.e. `
 | -------------------- | -------------------------- | --------------------- | --------------------- | ---------- | ----- | ----------- |
 | Total Protein        | Total Protein              | `Total Protein`       | `lab:LFT:TP`          | decimal    | g/dl  |             |
 | Albumin              | Serum Albumin              | `Albumin`             | `lab:LFT:albumin`     | decimal    | g/dl  |             |
-| Globulin             | Serum Globulin             | `Globulin`            | `lab:LFT:Globulin`    | decimal    | g/dl  |             |
+| Globulin             | Serum Globulin             | `Globulin`            | `lab:LFT:globulin`    | decimal    | g/dl  |             |
 | Alkaline Phosphatase | Alkaline Phosphatase       | `ALP`                 | `lab:LFT:ALP`         | decimal    | U/L   |             |
 | AST                  | Aspartate Aminotransferase | `AST`                 | `lab:LFT:AST`         | decimal    | U/L   |             |
 | ALT                  | Alanine Transaminase       | `ALT`                 | `lab:LFT:ALT`         | decimal    | U/L   |             |
